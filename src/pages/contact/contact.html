@@ -1,0 +1,43 @@
+<!--ion-header>
+  
+</ion-header-->
+
+
+<ion-content>
+
+    <ion-searchbar (ionInput)="filterList($event)"></ion-searchbar>
+
+    <ion-fab bottom right edge style="margin-bottom:10%;">
+      <button (click)="ChooseLocalFile()" ion-fab mini><ion-icon name="musical-notes"></ion-icon></button>
+    </ion-fab>
+
+   <audio id="player" *ngIf="isUploading==false;else elseBlock" controls>
+      <source id="mp3Source" type="audio/mp3" src="{{playerSrc}}"/>
+  </audio>
+     
+   <ng-template #elseBlock>
+      <ion-range [(ngModel)]="uploadProgress" >
+        <ion-icon range-left name="cloud-upload"></ion-icon>
+         <ion-icon range-right name="document"></ion-icon>
+      </ion-range>
+    </ng-template>
+
+   <ion-list no-lines>
+  
+     
+        <ion-item *ngFor="let item of songs  | async; let i = index">
+          <ion-thumbnail item-left>
+            <img src="{{item.cover}}">
+          </ion-thumbnail>
+          <button ion-item (click)="playSongByMe(item,i)">
+                {{ item.title }}
+          </button> 
+          <p>{{item.artist}}</p>
+          <ion-icon item-right name="musical-note" *ngIf="i == playingSongIndex"></ion-icon>          
+
+        </ion-item>
+     
+    </ion-list>
+
+</ion-content>
+

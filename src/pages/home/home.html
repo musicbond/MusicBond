@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+        {{commonProps.playingSong}}      
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab top right edge>
+      <button (click)="togglePlaying()" ion-fab mini *ngIf="!commonProps.isPlaying"><ion-icon name="play"></ion-icon></button>
+      <button (click)="togglePlaying()" ion-fab mini *ngIf="commonProps.isPlaying"><ion-icon name="pause"></ion-icon></button>              
+      <!--ion-fab-list>
+        <button ion-fab><ion-icon name="image"></ion-icon></button>
+      </ion-fab-list-->
+  </ion-fab>
+  <!--audio controls>
+    Audio not supported.
+  </audio-->
+  <ion-list id="chatListDiv" no-lines text-wrap>
+    <ion-item *ngFor="let chat of chats | async">    
+      <p *ngIf="chat.type == msgType.TEXT" [ngClass]="{me: chat.id == userId, them: chat.id != userId}">
+         {{chat.message}} 
+        <ion-note item-right>{{getChatTime(chat.timestamp)}}</ion-note>
+        <!-- ion-icon name="checkmark" item-right></ion-icon -->        
+      </p>      
+      <img *ngIf="chat.type == msgType.IMAGE" (click)="showImageInFullScreen(chat.url)" [src]="chat.url" [ngClass]="{me: chat.id == userId, them: chat.id != userId}" />      
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  
+  <div *ngIf="isUploading" class="bar-two bar-con">
+    <div class="bar" [style.width]="uploadProgress + '%'"></div>
+  </div>
+
+  <ion-item style="padding-left:0px;">        
+    <!--ion-label>
+      <ion-icon (tap)="sendMessage()" name="send"></ion-icon>
+    </ion-label-->
+    <ion-input type="text" [(ngModel)]="userInput" (keyup.enter)="sendMessage(userInputTag)" placeholder="Type a message" #userInputTag></ion-input>        
+    
+    <!--button style="background-color:white; font-size:1.3em;color:#505053;border-radius:50%;box-shadow:0px 0px 0px #fff;" ion-button clear item-left (click)="ChooseLocalImageFile()"-->         
+    <button style="background-color:white; font-size:1.3em;color:#505053;padding:0px;" ion-button clear item-right (click)="ChooseLocalImageFile()">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+
+    <button style="background-color:white; font-size:1.3em;color:#505053;padding:0px;" *ngIf="userInput.length!=0" ion-button clear item-right (click)="sendMessage(userInputTag)">
+      <ion-icon name="send"></ion-icon>
+    </button>
+    
+  </ion-item>
+</ion-footer>

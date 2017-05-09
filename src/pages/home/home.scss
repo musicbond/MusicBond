@@ -1,0 +1,105 @@
+page-home {
+
+}
+
+#chatListDiv ion-item p {
+  margin: 0 0 0.5em;
+  border-radius: 1em;
+  //padding: 0.5em 1em;
+  padding: 0.5em 0em 0.5em 1em;
+  /*background: #e5e5ea;*/
+  max-width: 75%;
+  clear: both;
+  position: relative;
+}
+p.them {
+  float: left;
+  background-color: #1289fe !important;
+  color: white;
+}
+p.them::after {
+  content: "";
+  position: absolute;
+  left: -0.5em;
+  bottom: 0;
+  width: 0.5em;
+  height: 1em;
+  border-right: 0.5em solid #1289fe;
+  border-bottom-right-radius: 1em 0.5em;
+}
+p.me {
+  float: right;
+  background-color: #b1b1b4 !important;
+  color: white;
+}
+p.me::after {
+  content: "";
+  position: absolute;
+  right: -0.5em;
+  bottom: 0;
+  width: 0.5em;
+  height: 1em;
+  border-left: 0.5em solid #b1b1b4;
+  border-bottom-left-radius: 1em 0.5em;
+}
+
+img.me{
+  float: right;
+  right: -0.5em;
+  bottom: 0;
+  width: 60%;
+  height: 200px;
+  border: 0.5em solid #b1b1b4;
+  border-radius: 0.5em;
+}
+img.them {
+  float: left;
+  left: -0.5em;
+  bottom: 0;
+  width: 60%;
+  height: 200px;
+  border: 0.5em solid #1289fe;
+  border-radius: 1em 0.5em;
+}
+
+p ion-icon{
+  font-size:1rem;
+}
+
+p ion-note{
+  color:#e4e6ea !important;
+  font-size:1rem;
+}
+
+/*for progress css*/
+.bar-con {
+  background-color: #ccc;
+  height: 0.2em;
+  //margin-bottom: 1em;
+}
+.bar {
+  float: left;
+  height: 100%;
+  width: 0%;
+}
+.bar-one .bar {
+  background-color: #03AB70;
+  transition: width ease-in 1s;
+  -webkit-transition: width ease-in 1s;
+  -moz-transition: width ease-in 1s;
+  -o-transition: width ease-in 1s;
+}
+.bar-two .bar {
+  background-color: #1975FF;
+  transition: width ease-in-out 3s;
+  -webkit-transition: width ease-in-out 3s;
+  -moz-transition: width ease-in-out 3s;
+  -o-transition: width ease-in-out 3s;
+}
+.bar-three .bar {
+  background-color: #FF9900;
+  transition: width cubic-bezier(0.72, 0.45, 0.9, 0.12) 4s;
+  -webkit-transition: width cubic-bezier(0.72, 0.45, 0.9, 0.12) 4s;
+  -moz-transition: width cubic-bezier(0.72, 0.45, 0.9, 0.12) 4s;
+  -o-transition: width cubic-bezier(0.72, 0.45, 0.9, 0.12) 4s;
+}

@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Music
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div id="player" class="embed-responsive embed-responsive-16by9">
+        <div id="placeholder" style="width: 100%" class="embed-responsive-item"></div>
+        <div class="embed-responsive-item" style="width: 100% ; z-index: 90;position: fixed; background-color: black; background: url('images/cover.png'); background-size:cover; " *ngIf="!playEnabled"></div>        
+    </div>
+    
+    <ion-item>
+      <ion-range [(ngModel)]="player.seekVal" max="{{player.videoLength}}" (ionChange)="player.onSeekPlaying()" >        
+        <ion-icon name="hand" *ngIf="!player.vPlayer" range-left></ion-icon>
+        <ion-icon name="pause" (click)="player.pausePlaying()" *ngIf="player.vPlayer && player.onPlaying" range-left></ion-icon>
+        <ion-icon name="play" (click)="player.continuePlaying()" *ngIf="player.vPlayer && !player.onPlaying" range-left></ion-icon>
+        <!--ion-buttons range-left>
+            <button ion-button icon-only (click)="continueVideo()" *ngIf="player.onPlaying">
+                <ion-icon name="pause"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="pauseVideo()" *ngIf="!player.onPlaying">
+                <ion-icon name="play"></ion-icon>
+            </button>
+        </ion-buttons-->          
+      
+      </ion-range>
+    </ion-item>
+
+    <div id="search-form">
+        <form (ngSubmit)="findVideos($event)">
+            <ion-item>
+                <ion-label floating>Search Videos</ion-label>
+                <ion-input type="text" [(ngModel)]="search.params" name="search"></ion-input>
+                <button type="submit" ion-button icon-only clear item-right>
+          <ion-icon name="search"></ion-icon>
+        </button>
+
+            </ion-item>
+        </form>
+    </div>
+    <div id="results">
+        <div class="card-background-page">
+            <ion-card *ngFor="let video of videos.items">
+                <img src="{{video.snippet.thumbnails.high.url}}" />
+
+                <div class="card-title">
+                    {{video.snippet.title}}
+                </div>
+                <div class="card-subtitle">
+                    {{video.snippet.description}}
+                </div>
+                <button class="card-btn" (click)="player.launchPlayer(video.id.videoId)">
+  <ion-icon name="play"></ion-icon>
+</button>
+            </ion-card>
+        </div>
+    </div>
+</ion-content>

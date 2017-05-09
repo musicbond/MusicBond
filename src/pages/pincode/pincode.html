@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Pincode
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content id="pinContent" padding center text-center>
+ 
+Hi {{(user | async)?.name}},
+Enter Match code
+
+<ion-item class="pinInputParent">
+  <ion-input id="pinInput" type="number" [(ngModel)]="generatedCode" oninput="javascript: console.log('value',this.value); if ((this.value+'').length > 6) this.value = (this.value+'').slice(0, 6);" ></ion-input>
+</ion-item>
+
+  <!--ion-row>
+    <ion-col width-60>
+      <ion-item>
+        <ion-input type="text" pattern="\d{5}" maxlength="5" value="{{generatedCode}}"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col width-20>
+      <ion-item>
+        <ion-input type="text" pattern="\d{1}" maxlength="1" value="{{p2}}"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col width-20>
+      <ion-item>
+        <ion-input type="text" pattern="\d{1}" maxlength="1" value="{{p3}}"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col width-20>
+      <ion-item>
+        <ion-input type="text" pattern="\d{1}" maxlength="1" value="{{p4}}"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col width-20>
+      <ion-item>
+        <ion-input type="text" pattern="\d{1}" maxlength="1" value="{{p5}}"></ion-input>
+      </ion-item>
+    </ion-col>
+    
+  </ion-row-->
+  
+<p *ngIf="isPincodeGenerated == false">
+  Don't have a code? <a (click)="askPincode()" > Get Here </a>
+</p>
+<p *ngIf="isPincodeGenerated == true">
+  Want to share code to your partner? <a (click)="regularShare(generatedCode)" > Click Here </a>
+</p>
+
+<button (click)="validatePin()" ion-button block color="secondary">Submit</button>
+ </ion-content>

@@ -1,0 +1,20 @@
+1. https://www.last.fm/api/account/create
+    Application name	MusicBond
+    API key	3865fb521340eb80d825d38916cddf29
+    Shared secret	0a38eae0484bdd651fb5d128d29881a8
+    Registered to	Mahesh3849
+
+2.     "chats": {
+        ".write": "true",
+        ".indexOn": ["timestamp"],
+        "$message": {
+          ".validate": "newData.child('timestamp').val() < (now + 5000)"
+        }
+    }
+
+
+
+https://console.developers.google.com/apis/credentials?project=musicbond-633b9:
+    clientID: 528240254855-cp1urcb1jge3u46ir5lhsu19fe41tnte.apps.googleusercontent.com
+
+cordova plugin add cordova-plugin-googleplus –save –variable REVERSED_CLIENT_ID=528240254855-cp1urcb1jge3u46ir5lhsu19fe41tnte.apps.googleusercontent.com

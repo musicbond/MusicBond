@@ -1,0 +1,28 @@
+<!--ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header-->
+ 
+<ion-content>
+ 
+
+  <!--div class"container"-->
+    <img id="loginImg" src ="assets/login.jpg">
+    <h1>Welcome to MusicBond</h1>
+    <p class="loginP">Listen to music while you share bond with your partner</p>
+    <!--a href="" title="Button fade blue/green" class="button btnFade btnBlueGreen" (click)="googlePlusLogin()">
+      Sign in with Google
+    </a-->
+
+    <div> {{(af.auth | async )?.auth.email}} logged in</div>
+    <button *ngIf="!(af.auth | async)" (click)="googlePlusLogin()" ion-button color="secondary">Sign in with Google</button>
+  <!--/div-->
+
+  <!--button ion-button center (click)="googlePlusLogin()">
+    Log In with GooglePlus
+  </button-->
+  
+</ion-content>
